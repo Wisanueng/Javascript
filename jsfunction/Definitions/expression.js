@@ -1,3 +1,6 @@
+/// Function Expression
+
+
 const sayHello = function(){
     console.log("hello world");
 }
@@ -65,6 +68,13 @@ console.log("===================================================================
             }
 
             console.log(checkAge(25));
+
+            console.log("--------------------------------------");
+
+            // หรือจะทำให้สั้นลงโดย
+            const checkAgee = age => age < 18 ? "วัยรุ่น" : "ผู้ใหญ่";
+            console.log(checkAgee(23));
+
 
 
 console.log("=====================================================================================");
