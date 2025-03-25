@@ -1,0 +1,16 @@
+
+****** Callback 
+
+โจทย์ 1: ฟังก์ชันแสดงข้อความ
+สร้างฟังก์ชัน showMessage(message, callback) ที่รับข้อความและ callback function
+✅ ให้ callback function แสดงข้อความนั้นใน console.log()
+
+ตัวอย่าง Input และ Output:
+
+js
+Copy
+showMessage("Hello, Callback!", console.log);
+💡 Output:
+
+Copy
+Hello, Callback!
