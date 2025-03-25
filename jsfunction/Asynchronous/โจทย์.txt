@@ -14,3 +14,34 @@ showMessage("Hello, Callback!", console.log);
 
 Copy
 Hello, Callback!
+
+
+
+
+2. แปลงข้อความเป็นตัวพิมพ์ใหญ่
+สร้างฟังก์ชัน processText(text, callback) ที่
+
+แปลง text เป็นตัวพิมพ์ใหญ่
+
+เรียก callback พร้อมส่งข้อความที่แปลงแล้ว
+
+ตัวอย่างการใช้งาน
+
+processText("hello world", function(result) {
+    console.log("ข้อความที่แปลงแล้ว:", result);
+});
+
+
+
+3. คำนวณผลบวกของเลขสองตัว
+สร้างฟังก์ชัน addNumbers(a, b, calblack) ที่
+
+คำนวณ a + b
+
+เรียก callback พร้อมส่งผลลัพธ์ไปให้
+
+ตัวอย่างการใช้งาน
+
+addNumbers(5, 10, function(result) {
+    console.log("ผลรวมคือ:", result);
+});
