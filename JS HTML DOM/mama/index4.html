@@ -1,0 +1,69 @@
+    <!-- สร้างฟอร์มที่ตรวจสอบข้อมูลก่อนการส่ง
+    ใช้ JavaScript ตรวจสอบข้อมูลในฟอร์ม (เช่น ตรวจสอบว่าใส่อีเมลหรือไม่) ก่อนการส่งข้อมูล -->
+
+    <!-- <!DOCTYPE html>
+    <html lang="en">
+        <meta charset="UTF-8">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form action=""></form>
+    </body>
+    </html> -->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form Validation</title>
+        <script>
+            // ฟังก์ชั่นตรวจสอบข้อมูลก่อนส่ง
+            function validateForm() {
+                // ตรวจสอบว่าอีเมลถูกกรอกหรือไม่
+                var email = document.getElementById("email").value;
+                if (email == "") {
+                    alert("กรุณากรอกอีเมล");
+                    return false; // หยุดการส่งฟอร์ม
+                }
+
+                // ตรวจสอบว่าอีเมลถูกต้องหรือไม่
+                var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                if (!emailPattern.test(email)) {
+                    alert("กรุณากรอกอีเมลที่ถูกต้อง");
+                    return false; // หยุดการส่งฟอร์ม
+                }
+
+                // ตรวจสอบว่าใส่ชื่อหรือไม่
+                var name = document.getElementById("name").value;
+                if (name == "") {
+                    alert("กรุณากรอกชื่อ");
+                    return false; // หยุดการส่งฟอร์ม
+                }
+
+                // ถ้าผ่านการตรวจสอบทั้งหมด ให้ส่งฟอร์ม
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+
+        <h2>แบบฟอร์มการลงทะเบียน</h2>
+        <form onsubmit="return validateForm()">
+            <label for="name">ชื่อ:</label>
+            <input type="text" id="name" name="name">
+            <br><br>
+
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email">
+            <br><br>
+
+            <input type="submit" value="ส่ง">
+        </form>
+
+    </body>
+    </html>
+
+

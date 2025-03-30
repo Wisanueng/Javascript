@@ -13,4 +13,4 @@ const person = {
 let { firstName, lastName } = person;
 
 
-console.log(person.lastName);
+console.log(person);

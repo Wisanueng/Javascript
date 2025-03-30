@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .button{
+        background-color: rgb(239, 48, 48);
+        width: 50px;
+        height: 50px;
+    }
+</style>
+<body>
+    <!-- . เปลี่ยนสีพื้นหลังของหน้าต่างเมื่อคลิกปุ่ม
+    ใช้ JavaScript เปลี่ยนสีพื้นหลังของ body เมื่อคลิกปุ่ม. -->
+    <button class="button" id="01" onclick="changecolor()">
+        click!!
+    </button>
+
+    <script>
+        // let button = document.getElementById("01");
+
+        function changecolor () {
+            if (document.body.style.backgroundColor === "") {
+                document.body.style.backgroundColor = "yellow";
+            } else {
+                document.body.style.backgroundColor = "";
+            }
+            
+        }
+
+    </script>
+</body>
+</html>

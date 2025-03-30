@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .butt{
+        width: 100px;
+        height: 100px;
+        background-color: brown;
+    }
+    .param{
+        display: block;
+    }
+</style>
+<body>
+    <!-- 1. สร้างปุ่มที่เมื่อคลิกแล้วจะซ่อนข้อความ
+    ใช้ JavaScript ซ่อนหรือแสดงข้อความบนเว็บเมื่อผู้ใช้คลิกปุ่ม. -->
+    <button class = "butt" id="001" onclick="togletext()"></button>
+    <p class="param" id="01">hello world</p>
+    
+</body>
+
+<script>
+    let param = document.getElementById("01");
+    let but = document.getElementById("001");
+
+    function togletext () {
+        if (param.style.display === "none") {
+            param.style.display = "block";
+        } else {
+            param.style.display = "none";
+        }
+    }
+</script>
+</html>

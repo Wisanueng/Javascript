@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Class Without classList.add() and No Initial Class</title>
+    <style>
+        /* สไตล์เริ่มต้น */
+        #myElement {
+            background-color: lightgray;
+            padding: 20px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        /* คลาสที่จะเพิ่ม */
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ปุ่มที่ใช้คลิกเพื่อเพิ่มคลาส -->
+    <button onclick="addClass()">Click to Add Class</button>
+
+    <!-- Element ที่จะเพิ่มคลาส -->
+    <div id="myElement">Click the button to add a class to this element.</div>
+
+    <script>
+        // ฟังก์ชันที่จะเพิ่มคลาสให้กับ element เมื่อคลิกปุ่ม
+        function addClass() {
+            var element = document.getElementById("myElement");  // ค้นหา element ที่มี id="myElement"
+            element.className = "highlight";  // กำหนด className ใหม่เป็น "highlight"
+        }
+    </script>
+
+</body>
+</html>
