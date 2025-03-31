@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="01" onclick="createEL()">click</button>
+    <ul id="myList"></ul>
+
+    <script>
+        let button = document.getElementById("01");
+        let ul = document.getElementById("myList");
+        let li = document.createElement("li");
+
+        function createEL() {
+            ul.appendChild(li)
+            li.textContent = "yeh bro";
+        }
+    </script>
+</body>
+</html>

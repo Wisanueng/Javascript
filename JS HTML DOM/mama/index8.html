@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            display: block;
+            /* justify-content: center; */
+            align-items: center;
+        }
+    .but{
+        width: 500px;
+        height: 50px;
+
+    }
+    .param{
+        text-align: center;
+        padding-top: 30%;
+    }
+</style>
+<body>
+    <button class="but" id="01" onclick="addcount()">ลองกดดู</button>
+
+    <div class="box">
+        <p class="param" id="param">
+            0
+        </p>
+    </div>
+
+
+    <script>
+        let count = 0;
+        let countdisplay = document.getElementById('param');
+
+        function addcount() {
+            count ++;
+            countdisplay.textContent = count;
+
+            if(count === 20){
+                document.getElementById("01").textContent = "กดเยอะจัง(เอาอีกเซ่)";
+            }
+        }
+    </script>
+</body>
+</html>
