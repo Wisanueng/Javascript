@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+    <h2>กรุณากรอกชื่อของคุณ</h2>
+    <form id="nameForm">
+        <label for="nameInput">ชื่อ:</label>
+        <input type="text" id="nameInput" name="name" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="greetingMessage"></p>
+
+    <script>
+        // เมื่อฟอร์มถูกส่ง
+        document.getElementById('nameForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // หยุดการรีเฟรชหน้าเว็บ
+            var name = document.getElementById('nameInput').value; // รับค่าจาก input
+            var greetingMessage = 'สวัสดี ' + name; // สร้างข้อความทักทาย
+            document.getElementById('greetingMessage').textContent = greetingMessage; // แสดงข้อความ
+        });
+    </script>
+</body>
+</html>
