@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<!-- <body>
+    <input type="text" id="txtinput" placeholder="ใส่มาที่นี่"> 
+    <button id="but" class="but" onclick="additem()">คลิกเพื่อเพิ่ม</button>
+
+    <ul id="List">
+
+    </ul>
+
+    <script>
+        
+
+        function additem () {
+
+            let INPUT = document.getElementById('txtinput').value;
+            let LIST = document.getElementById('List');
+            let LI = document.createElement('li');
+
+            for (let count = 1; count >=1; count++) {
+                return count;
+            }
+            LIST.appendChild(LI);
+            
+            LI.textContent = count +" "+ INPUT;
+           
+            
+
+        }
+    </script>
+</body> -->
+
+<body>
+    <input type="text" id="txtinput" placeholder="ใส่มาที่นี่"> 
+    <button id="but" class="but" onclick="additem()">คลิกเพื่อเพิ่ม</button>
+
+    <ul id="List"></ul>
+
+    <script>
+        function additem() {
+            let INPUT = document.getElementById('txtinput').value;
+            let LIST = document.getElementById('List');
+
+            if (INPUT.trim() === "") {
+                alert("กรุณากรอกข้อความก่อนเพิ่มรายการ!");
+                return;
+            }
+
+            let LI = document.createElement('li');
+
+            // นับจำนวนรายการที่มีอยู่แล้ว +1
+            let count = LIST.children.length + 1;
+            
+            LI.textContent = count + " " + INPUT;
+            LIST.appendChild(LI);
+
+            // เคลียร์ค่า input หลังจากเพิ่มรายการ
+            document.getElementById('txtinput').value = "";
+        }
+    </script>
+</body>
+
+</html> 

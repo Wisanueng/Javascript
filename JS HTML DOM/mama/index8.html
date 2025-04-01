@@ -25,7 +25,8 @@
     }
 </style>
 <body>
-    <button class="but" id="01" onclick="addcount()">ลองกดดู</button>
+    <button class="but" id="01" onclick="addcount()">บวก</button>
+    <button class="but" id="01" onclick="Noaddcount()">ลบ</button>
 
     <div class="box">
         <p class="param" id="param">
@@ -37,6 +38,12 @@
     <script>
         let count = 0;
         let countdisplay = document.getElementById('param');
+
+        function Noaddcount () {
+            count --;
+            countdisplay.textContent = count;
+            
+        }
 
         function addcount() {
             count ++;

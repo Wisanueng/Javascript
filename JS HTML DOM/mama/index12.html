@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Table</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .task-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        input, select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .task-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .task-table th,
+        .task-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .task-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .task-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .status-pending {
+            color: #ffc107;
+        }
+
+        .status-in-progress {
+            color: #17a2b8;
+        }
+
+        .status-completed {
+            color: #28a745;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .edit-btn {
+            background: #ffc107;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+        }
+
+        .edit-btn:hover {
+            background: #e0a800;
+        }
+
+        .delete-btn:hover {
+            background: #c82333;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Table</h1>
+        <form class="task-form" id="taskForm">
+            <input type="text" id="taskName" placeholder="Task Name" required>
+            <input type="date" id="taskDate" required>
+            <select id="taskStatus" required>
+                <option value="pending">Pending</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
+            <button type="submit">Add Task</button>
+        </form>
+        <table class="task-table">
+            <thead>
+                <tr>
+                    <th>Task Name</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="taskList">
+                <tr>
+                    <td colspan="4" class="empty-message">No tasks yet. Add a task to get started!</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        class Task {
+            constructor(name, date, status) {
+                this.id = Date.now();
+                this.name = name;
+                this.date = date;
+                this.status = status;
+            }
+        }
+
+        class TaskManager {
+            constructor() {
+                this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                this.taskForm = document.getElementById('taskForm');
+                this.taskList = document.getElementById('taskList');
+                this.taskName = document.getElementById('taskName');
+                this.taskDate = document.getElementById('taskDate');
+                this.taskStatus = document.getElementById('taskStatus');
+
+                this.taskForm.addEventListener('submit', (e) => this.handleSubmit(e));
+                this.renderTasks();
+            }
+
+            handleSubmit(e) {
+                e.preventDefault();
+                const task = new Task(
+                    this.taskName.value,
+                    this.taskDate.value,
+                    this.taskStatus.value
+                );
+                this.addTask(task);
+                this.taskForm.reset();
+            }
+
+            addTask(task) {
+                this.tasks.push(task);
+                this.saveTasks();
+                this.renderTasks();
+            }
+
+            deleteTask(id) {
+                this.tasks = this.tasks.filter(task => task.id !== id);
+                this.saveTasks();
+                this.renderTasks();
+            }
+
+            editTask(id) {
+                const task = this.tasks.find(task => task.id === id);
+                if (task) {
+                    this.taskName.value = task.name;
+                    this.taskDate.value = task.date;
+                    this.taskStatus.value = task.status;
+                    this.deleteTask(id);
+                }
+            }
+
+            saveTasks() {
+                localStorage.setItem('tasks', JSON.stringify(this.tasks));
+            }
+
+            renderTasks() {
+                if (this.tasks.length === 0) {
+                    this.taskList.innerHTML = `
+                        <tr>
+                            <td colspan="4" class="empty-message">No tasks yet. Add a task to get started!</td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                this.taskList.innerHTML = this.tasks.map(task => `
+                    <tr>
+                        <td>${task.name}</td>
+                        <td>${new Date(task.date).toLocaleDateString()}</td>
+                        <td class="status-${task.status}">${task.status.charAt(0).toUpperCase() + task.status.slice(1)}</td>
+                        <td class="action-buttons">
+                            <button class="edit-btn" onclick="taskManager.editTask(${task.id})">Edit</button>
+                            <button class="delete-btn" onclick="taskManager.deleteTask(${task.id})">Delete</button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        const taskManager = new TaskManager();
+    </script>
+</body>
+</html>
+</body>
+</html>
