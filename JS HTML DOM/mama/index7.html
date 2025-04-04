@@ -6,27 +6,83 @@
     <title>Document</title>
 </head>
 <body>
-    <style>
-        .box{
-            width: 50px;
-            height: 50px;
-            background-color: red;
-            display: block;
-            
-        }
-        /* เปลี่ยนด้วย css */
-        .box:hover {
-                background-color:black;
-                cursor: alias;
-            }
-    </style>
-    <div class="box" id="01"></div>
+
+    
+
+    <div>
+        <h1>ข้อความเริ่มต้นคือ</h1>
+        <p id="param" class="params">Hello World</p>
+    </div>
+    <hr>
+
+    <div>
+        <p id="param2" class="params">welcome to js</p>
+        <button id="but" class="butt" onclick="changeStartParam1()">เปลี่ยนเป็นข้อความนี้</button>
+    </div>
+    <hr>
+    <div>
+        <p id="param3" class="params">hello js</p>
+        <button id="but" class="butt" onclick="changeStartParam2()">เปลี่ยนเป็นข้อความนี้</button>
+    </div>
 
 
     <script>
-        let box = document.getElementbyId("01");
+        let startParam = document.getElementById('param');
+        let param2 = document.getElementById('param2');
+        let param3 = document.getElementById('param3');
 
-        box.
+        function changeStartParam1 () {
+            startParam.textContent = param2.textContent;
+        }
+        function changeStartParam2 () {
+            startParam.textContent = param3.textContent;
+        }
     </script>
 </body>
 </html>
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Exercise</title>
+    <style>
+        .button-container {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>แสดงข้อความเริ่มต้น</h1>
+    <p id="message">Hello World</p>
+
+    <div class="button-container">
+        <button onclick="changeMessage('Welcome to JavaScript!')">เปลี่ยนเป็น 'Welcome to JavaScript!'</button>
+    </div>
+
+    <div class="button-container">
+        <button onclick="changeMessage('Learning DOM with JS is fun!')">เปลี่ยนเป็น 'Learning DOM with JS is fun!'</button>
+    </div>
+
+    <div class="button-container">
+        <button onclick="changeMessage('You just changed the text!')">เปลี่ยนเป็น 'You just changed the text!'</button>
+    </div>
+
+    <script>
+        // ฟังก์ชันที่ใช้ในการเปลี่ยนข้อความ
+        function changeMessage(newMessage) {
+            // หาตัวแปรที่เก็บข้อความ
+            const messageElement = document.getElementById('message');
+            // เปลี่ยนข้อความภายใน element
+            messageElement.textContent = newMessage;
+        }
+    </script>
+
+</body>
+</html> -->
